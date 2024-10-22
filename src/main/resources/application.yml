@@ -1,0 +1,38 @@
+server:
+    port: 8000
+
+spring:
+    profiles:
+        active: local
+    datasource:
+        url: jdbc:mariadb://211.118.245.244:4120/chatting_program?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+        username: root
+        password: open1404
+        driver-class-name: org.mariadb.jdbc.Driver
+    data:
+        redis:
+            host: 127.0.0.1
+            port: 8200
+    servlet:
+        multipart:
+            maxFileSize: 4MB
+            maxRequestSize: 10MB
+
+mybatis:
+    configuration:
+        multiple-result-sets-enabled: false
+        map-underscore-to-camel-case: true
+        call-setters-on-nulls: true
+        jdbc-type-for-null: varchar
+        default-fetch-size: 500
+    mapper-locations:
+        - classpath:/mappers/*.xml
+
+jwt:
+    secret: kevin1234123412341234123412341234
+    refresh-token-validity-in-seconds: 7200000 # 2시간
+    access-token-validity-in-seconds: 300000 # 300초
+
+logging:
+    level:
+        org.springframework.security: DEBUG
